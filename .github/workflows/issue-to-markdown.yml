@@ -22,12 +22,7 @@ jobs:
       - name: Print Node.js version
         run: node -v
 
-      - name: Clean Node.js modules
-        run: |
-          rm -rf node_modules
-          npm install
-
-      - name: Install dependencies
+      - name: Install @actions/core and @actions/github
         run: npm install @actions/core @actions/github
 
       - name: Update markdown file
