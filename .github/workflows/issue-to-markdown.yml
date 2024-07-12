@@ -30,11 +30,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit changes
+      - name: Commit and Pull changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull --rebase
           git add contributions.md
-          git commit -m 'Update markdown file with new contribution issue'
+          git commit -m 'Update markdown file with new contribution issue' || echo "Nothing to commit"
+          git pull --rebase
+
+      - name: Push changes
+        run: |
           git push
