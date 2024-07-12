@@ -6,7 +6,9 @@ on:
 
 jobs:
   update-markdown:
-    if: github.event.label.name == 'contribution' || (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'contribution'))
+    if: |
+      contains(github.event.issue.labels.*.name, 'contribution') &&
+      (github.event.action == 'opened' || github.event.action == 'labeled')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
