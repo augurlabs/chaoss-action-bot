@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Print Node.js version
+        run: node -v
+
       - name: Clean Node.js modules
         run: |
           rm -rf node_modules
