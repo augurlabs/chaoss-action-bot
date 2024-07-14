@@ -89,3 +89,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @Maryblessing    | Newcomer Tour Guide | CHAOSS Community  | May 4, 2024 | Community Building and Management|
 | @Toriasdesign    | Designed a posters for CHAOSS Africa outreach program-PLWD | CHAOSS Africa  | May 15, 2024 | Graphic Design|
 | @adeyinkaoresanya     | Facilitated a workshop in CHAOSS Africa Devs' focus group Meeting | CHAOSS Community |  May 9, 2024 | Community Building and Management|
+| @sgoggins |  |  |  |  |
