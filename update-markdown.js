@@ -15,8 +15,11 @@ const github = require('@actions/github');
       const issueBody = issue.body;
       const newRow = `| @${username} | ${issueBody} | | | |\n`;
 
-      const filePath = 'contributions.md';
+      const filePath = 'community-contributions.md';
       const fileContents = fs.readFileSync(filePath, 'utf-8');
+      
+      console.log('Original File Contents:');
+      console.log(fileContents);
 
       const updatedContents = fileContents.replace(
         /(## Community Contributions\n\n\| GitHub Username \| Task completed[^\n]+\n\|[^\n]+\n)/,
@@ -25,7 +28,9 @@ const github = require('@actions/github');
 
       fs.writeFileSync(filePath, updatedContents);
       
-      console.log(`Updated Contents:\n${updatedContents}`);
+      console.log('Updated File Contents:');
+      console.log(updatedContents);
+
       console.log(`New contribution added to ${filePath}`);
     }
   } catch (error) {
