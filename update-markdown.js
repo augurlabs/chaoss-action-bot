@@ -24,7 +24,8 @@ const github = require('@actions/github');
       );
 
       fs.writeFileSync(filePath, updatedContents);
-
+      
+      console.log(`Updated Contents:\n${updatedContents}`);
       console.log(`New contribution added to ${filePath}`);
     }
   } catch (error) {
