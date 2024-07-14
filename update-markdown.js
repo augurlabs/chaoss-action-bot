@@ -21,10 +21,15 @@ const github = require('@actions/github');
       console.log('Original File Contents:');
       console.log(fileContents);
 
-      const updatedContents = fileContents.replace(
-        /(## Community Contributions\n\n\| GitHub Username \| Task completed[^\n]+\n\|[^\n]+\n)/,
-        `$1${newRow}`
-      );
+      // Find the position to insert the new row
+      const tableEndIndex = fileContents.lastIndexOf('|-----------------|');
+      const insertionPoint = fileContents.indexOf('\n', tableEndIndex) + 1;
+
+      const updatedContents = [
+        fileContents.slice(0, insertionPoint),
+        newRow,
+        fileContents.slice(insertionPoint)
+      ].join('');
 
       fs.writeFileSync(filePath, updatedContents);
       
