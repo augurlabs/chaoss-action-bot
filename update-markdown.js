@@ -17,9 +17,10 @@ const github = require('@actions/github');
 
       const filePath = 'contributions.md';
       const fileContents = fs.readFileSync(filePath, 'utf-8');
+
       const updatedContents = fileContents.replace(
-        /(\| @[\w-]+.*\n)+/,
-        `$&${newRow}`
+        /(## Community Contributions\n\n\| GitHub Username \| Task completed[^\n]+\n\|[^\n]+\n)/,
+        `$1${newRow}`
       );
 
       fs.writeFileSync(filePath, updatedContents);
