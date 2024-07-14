@@ -90,3 +90,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @Toriasdesign    | Designed a posters for CHAOSS Africa outreach program-PLWD | CHAOSS Africa  | May 15, 2024 | Graphic Design|
 | @adeyinkaoresanya     | Facilitated a workshop in CHAOSS Africa Devs' focus group Meeting | CHAOSS Community |  May 9, 2024 | Community Building and Management|
 | @sgoggins |  |  |  |  |
+| @sgoggins | Invented water. | Community | 2024-07-13 | Documentation |
