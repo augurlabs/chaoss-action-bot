@@ -26,10 +26,10 @@ const github = require('@actions/github');
         `$1${newRow}`
       );
 
+      fs.writeFileSync(filePath, updatedContents);
+      
       console.log('New Row to Add:');
       console.log(newRow);
-
-      fs.writeFileSync(filePath, updatedContents);
 
       console.log('Updated File Contents:');
       console.log(updatedContents);
