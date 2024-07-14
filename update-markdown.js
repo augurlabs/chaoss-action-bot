@@ -12,12 +12,12 @@ const github = require('@actions/github');
 
     if (issue.labels.some(label => label.name === 'contribution')) {
       const username = issue.user.login;
-      const issueBody = issue.body;
+      const issueBody = issue.body ? issue.body.trim() : "No description provided.";
       const newRow = `| @${username} | ${issueBody} | | | |\n`;
 
       const filePath = 'community-contributions.md';
       const fileContents = fs.readFileSync(filePath, 'utf-8');
-      
+
       console.log('Original File Contents:');
       console.log(fileContents);
 
@@ -26,12 +26,17 @@ const github = require('@actions/github');
         `$1${newRow}`
       );
 
+      console.log('New Row to Add:');
+      console.log(newRow);
+
       fs.writeFileSync(filePath, updatedContents);
-      
+
       console.log('Updated File Contents:');
       console.log(updatedContents);
 
       console.log(`New contribution added to ${filePath}`);
+    } else {
+      console.log('No "contribution" label found, skipping update.');
     }
   } catch (error) {
     core.setFailed(error.message);
