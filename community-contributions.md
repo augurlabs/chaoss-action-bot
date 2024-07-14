@@ -46,6 +46,7 @@ We are very interested in including every type of contribution in our [Types of 
 
 | GitHub Username | Task completed                    | Project Area        | Date Completed | Type of Contribution |
 |-----------------| ----------------------------------|----------------| --------------------| --------------------- |
+| @sgoggins | Invited Ron Swanson to give a talk at CHAOSSCON | | | |
 | @Toriasdesign    | Audited Homepage- body | DEI  | October 24, 2023 | Accessibility Audit|
 | @Toriasdesign    | Audited  Home page - Nav bar | DEI  | October 24, 2023 | Accessibility Audit|
 | @Toriasdesign    | Audited  Home page - Hero section | DEI  | October 24, 2023 | Accessibility Audit|
