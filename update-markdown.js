@@ -15,23 +15,10 @@ const github = require('@actions/github');
 
       // Extract details from the issue body
       const issueBody = issue.body || "";
-      const lines = issueBody.split('\n');
-      let taskCompleted = "No description provided.";
-      let projectArea = "N/A";
-      let dateCompleted = new Date().toISOString().split('T')[0];
-      let typeOfContribution = "N/A";
-
-      lines.forEach(line => {
-        if (line.startsWith("**Task Completed**:")) {
-          taskCompleted = line.replace("**Task Completed**:", "").trim();
-        } else if (line.startsWith("**Project Area**:")) {
-          projectArea = line.replace("**Project Area**:", "").trim();
-        } else if (line.startsWith("**Date Completed**:")) {
-          dateCompleted = line.replace("**Date Completed**:", "").trim();
-        } else if (line.startsWith("**Type of Contribution**:")) {
-          typeOfContribution = line.replace("**Type of Contribution**:", "").trim();
-        }
-      });
+      const taskCompleted = issueBody.match(/\*\*Task Completed\*\*:\s*(.*)/)?.[1] || "No description provided.";
+      const projectArea = issueBody.match(/\*\*Project Area\*\*:\s*(.*)/)?.[1] || "N/A";
+      const dateCompleted = issueBody.match(/\*\*Date Completed\*\*:\s*(.*)/)?.[1] || new Date().toISOString().split('T')[0];
+      const typeOfContribution = issueBody.match(/\*\*Type of Contribution\*\*:\s*(.*)/)?.[1] || "N/A";
 
       const newRow = `| @${username} | ${taskCompleted} | ${projectArea} | ${dateCompleted} | ${typeOfContribution} |\n`;
 
