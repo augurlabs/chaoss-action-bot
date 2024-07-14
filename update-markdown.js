@@ -11,14 +11,20 @@ const github = require('@actions/github');
     const { issue } = context.payload;
 
     if (issue.labels.some(label => label.name === 'contribution')) {
+      const username = issue.user.login;
       const issueBody = issue.body;
-
-      const markdownContent = `${issueBody}\n\n`;
+      const newRow = `| @${username} | ${issueBody} | | | |\n`;
 
       const filePath = 'contributions.md';
-      fs.appendFileSync(filePath, markdownContent);
+      const fileContents = fs.readFileSync(filePath, 'utf-8');
+      const updatedContents = fileContents.replace(
+        /(\| @[\w-]+.*\n)+/,
+        `$&${newRow}`
+      );
 
-      console.log(`Issue description added to ${filePath}`);
+      fs.writeFileSync(filePath, updatedContents);
+
+      console.log(`New contribution added to ${filePath}`);
     }
   } catch (error) {
     core.setFailed(error.message);

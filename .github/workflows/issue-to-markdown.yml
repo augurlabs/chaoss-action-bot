@@ -37,7 +37,4 @@ jobs:
           git add contributions.md
           git commit -m 'Update markdown file with new contribution issue' || echo "Nothing to commit"
           git pull --rebase
-
-      - name: Push changes
-        run: |
           git push
