@@ -91,3 +91,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @adeyinkaoresanya     | Facilitated a workshop in CHAOSS Africa Devs' focus group Meeting | CHAOSS Community |  May 9, 2024 | Community Building and Management|
 | @sgoggins |  |  |  |  |
 | @sgoggins | Invented water. | Community | 2024-07-13 | Documentation |
+| @ElizabethN | Facilitated like a boss. | Community | 2024-07-16 | Community Building |
