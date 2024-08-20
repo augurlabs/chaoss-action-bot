@@ -23,7 +23,7 @@ body:
   - type: input
     attributes:
       label: Date of Completion 
-      description: Indicate the Date of Contribution 
+      description: Enter the date you completed the task (e.g., 2024-07-12). 
     validations:
       required: true
 
