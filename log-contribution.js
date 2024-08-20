@@ -19,13 +19,13 @@ const github = require('@actions/github');
 
       // Default values
       let projectArea = "N/A";
-      let dateCompleted = new Date().toISOString().split('T')[0];
+      let dateCompleted = "N/A";
       let typeOfContribution = "N/A";
 
-      // Improved parsing logic with additional logging
-      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\)\s*\n\s*(.*)/);
-      const dateCompletedMatch = issueBody.match(/Date of Completion\s*\n\s*(.*)/);
-      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\)\s*\n\s*(.*)/);
+      // Improved parsing logic with more robust regex
+      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\):\n+(.+)/);
+      const dateCompletedMatch = issueBody.match(/Date of Completion:\n+(.+)/);
+      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\):\n+(.+)/);
 
       if (projectAreaMatch) {
         projectArea = projectAreaMatch[1].trim();
