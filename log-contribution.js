@@ -22,16 +22,14 @@ const github = require('@actions/github');
       let dateCompleted = new Date().toISOString().split('T')[0];
       let typeOfContribution = "N/A";
 
-      // Extract specific lines based on labels
-      issueBody.split('\n').forEach(line => {
-        if (line.startsWith("Specify Area of Project")) {
-          projectArea = line.split('Specify Area of Project')[1]?.trim() || projectArea;
-        } else if (line.startsWith("Date of Completion")) {
-          dateCompleted = line.split('Date of Completion')[1]?.trim() || dateCompleted;
-        } else if (line.startsWith("Specify the type of contribution")) {
-          typeOfContribution = line.split('Specify the type of contribution')[1]?.trim() || typeOfContribution;
-        }
-      });
+      // Improved parsing logic
+      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\):\n*(.*)/);
+      const dateCompletedMatch = issueBody.match(/Date of Completion:\n*(.*)/);
+      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\):\n*(.*)/);
+
+      if (projectAreaMatch) projectArea = projectAreaMatch[1].trim();
+      if (dateCompletedMatch) dateCompleted = dateCompletedMatch[1].trim();
+      if (typeOfContributionMatch) typeOfContribution = typeOfContributionMatch[1].trim();
 
       // Assume the task description comes from the issue title
       const taskCompleted = issue.title.replace('[Project]:', '').trim();
