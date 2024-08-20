@@ -1,7 +1,7 @@
 name: CHAOSS Contribution
 title: "[Project]: NAME"
 description: Use this template to register a new CHAOSS Contribution
-labels: ['project', 'proposal']
+labels: ['contribution']
 
 body:
   - type: markdown
