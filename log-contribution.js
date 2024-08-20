@@ -22,14 +22,31 @@ const github = require('@actions/github');
       let dateCompleted = new Date().toISOString().split('T')[0];
       let typeOfContribution = "N/A";
 
-      // Improved parsing logic
-      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\):\n*(.*)/);
-      const dateCompletedMatch = issueBody.match(/Date of Completion:\n*(.*)/);
-      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\):\n*(.*)/);
+      // Improved parsing logic with additional logging
+      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\)\s*\n\s*(.*)/);
+      const dateCompletedMatch = issueBody.match(/Date of Completion\s*\n\s*(.*)/);
+      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\)\s*\n\s*(.*)/);
 
-      if (projectAreaMatch) projectArea = projectAreaMatch[1].trim();
-      if (dateCompletedMatch) dateCompleted = dateCompletedMatch[1].trim();
-      if (typeOfContributionMatch) typeOfContribution = typeOfContributionMatch[1].trim();
+      if (projectAreaMatch) {
+        projectArea = projectAreaMatch[1].trim();
+        console.log('Project Area:', projectArea);
+      } else {
+        console.log('Project Area not found.');
+      }
+
+      if (dateCompletedMatch) {
+        dateCompleted = dateCompletedMatch[1].trim();
+        console.log('Date Completed:', dateCompleted);
+      } else {
+        console.log('Date Completed not found.');
+      }
+
+      if (typeOfContributionMatch) {
+        typeOfContribution = typeOfContributionMatch[1].trim();
+        console.log('Type of Contribution:', typeOfContribution);
+      } else {
+        console.log('Type of Contribution not found.');
+      }
 
       // Assume the task description comes from the issue title
       const taskCompleted = issue.title.replace('[Project]:', '').trim();
