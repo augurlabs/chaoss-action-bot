@@ -92,3 +92,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @sgoggins |  |  |  |  |
 | @sgoggins | Invented water. | Community | 2024-07-13 | Documentation |
 | @ElizabethN | Facilitated like a boss. | Community | 2024-07-16 | Community Building |
+| @sgoggins | No description provided. | N/A | 2024-08-20 | N/A |
