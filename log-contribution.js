@@ -13,18 +13,30 @@ const github = require('@actions/github');
     if (issue.labels.some(label => label.name === 'contribution')) {
       const username = issue.user.login;
 
-      // Log the full issue body for detailed debugging
-      console.log('Full Issue Body:', JSON.stringify(issue.body, null, 2));
-
-      // Extract details from the issue body using improved logic
+      // Log the issue body for debugging
       const issueBody = issue.body || "";
-      
-      // Just using a placeholder for now to see the structure
-      const taskCompleted = issue.title.replace('[Project]:', '').trim(); // Title of the issue as task
-      const projectArea = "N/A";
-      const dateCompleted = new Date().toISOString().split('T')[0];
-      const typeOfContribution = "N/A";
+      console.log('Full Issue Body:', issueBody);
 
+      // Default values
+      let projectArea = "N/A";
+      let dateCompleted = new Date().toISOString().split('T')[0];
+      let typeOfContribution = "N/A";
+
+      // Extract specific lines based on labels
+      issueBody.split('\n').forEach(line => {
+        if (line.startsWith("Specify Area of Project")) {
+          projectArea = line.split('Specify Area of Project')[1]?.trim() || projectArea;
+        } else if (line.startsWith("Date of Completion")) {
+          dateCompleted = line.split('Date of Completion')[1]?.trim() || dateCompleted;
+        } else if (line.startsWith("Specify the type of contribution")) {
+          typeOfContribution = line.split('Specify the type of contribution')[1]?.trim() || typeOfContribution;
+        }
+      });
+
+      // Assume the task description comes from the issue title
+      const taskCompleted = issue.title.replace('[Project]:', '').trim();
+
+      // Create a new row for the markdown table
       const newRow = `| @${username} | ${taskCompleted} | ${projectArea} | ${dateCompleted} | ${typeOfContribution} |\n`;
 
       const filePath = 'community-contributions.md';
@@ -33,6 +45,7 @@ const github = require('@actions/github');
       console.log('Original File Contents:');
       console.log(fileContents);
 
+      // Append the new row to the existing content
       const updatedContents = fileContents + newRow;
 
       fs.writeFileSync(filePath, updatedContents);
