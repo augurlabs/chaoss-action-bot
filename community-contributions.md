@@ -103,3 +103,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @sgoggins | No description provided. | N/A | 2024-08-20 | N/A |
 | @sgoggins | test | N/A | 2024-08-20 | N/A |
 | @sgoggins | test | test | 2024-08-02 | N/A |
+| @sgoggins | The name of the test is fred | N/A | N/A | N/A |
