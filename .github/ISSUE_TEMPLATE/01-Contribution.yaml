@@ -20,7 +20,7 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     attributes:
       label: Date of Completion 
       description: Indicate the Date of Contribution 
