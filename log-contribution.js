@@ -13,15 +13,14 @@ const github = require('@actions/github');
     if (issue.labels.some(label => label.name === 'contribution')) {
       const username = issue.user.login;
 
-      // Extract details from the issue body using the template structure
+      // Extract details from the issue body using structured YAML template format
       const issueBody = issue.body || "";
-      const taskCompleted = issue.title.replace('[Project]:', '').trim(); // Assuming task is captured in the title
-      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\)\n\n(.*)/);
-      const projectArea = projectAreaMatch ? projectAreaMatch[1].trim() : "N/A";
-      const dateCompletedMatch = issueBody.match(/Date of Completion\n\n(.*)/);
-      const dateCompleted = dateCompletedMatch ? dateCompletedMatch[1].trim() : new Date().toISOString().split('T')[0];
-      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\)\n\n(.*)/);
-      const typeOfContribution = typeOfContributionMatch ? typeOfContributionMatch[1].trim() : "N/A";
+      
+      // Use specific markers from the YAML template to extract data
+      const taskCompleted = issue.title.replace('[Project]:', '').trim(); // Title of the issue as task
+      const projectArea = issueBody.match(/Specify Area of Project \(1 - 5 words\)\n\n.*?\n\n(.*?)\n/)?.[1] || "N/A";
+      const dateCompleted = issueBody.match(/Date of Completion\n\n.*?\n\n(.*?)\n/)?.[1] || new Date().toISOString().split('T')[0];
+      const typeOfContribution = issueBody.match(/Specify the type of contribution.*?\n\n(.*?)\n/)?.[1] || "N/A";
 
       const newRow = `| @${username} | ${taskCompleted} | ${projectArea} | ${dateCompleted} | ${typeOfContribution} |\n`;
 
