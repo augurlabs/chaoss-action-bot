@@ -15,7 +15,7 @@ const github = require('@actions/github');
 
       // Log the issue body for debugging
       const issueBody = issue.body || "";
-      console.log('Full Issue Body:', issueBody);
+      console.log('Full Issue Body:\n', issueBody);
 
       // Default values
       let projectArea = "N/A";
@@ -23,9 +23,9 @@ const github = require('@actions/github');
       let typeOfContribution = "N/A";
 
       // Improved parsing logic with more robust regex
-      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\):\n+(.+)/);
-      const dateCompletedMatch = issueBody.match(/Date of Completion:\n+(.+)/);
-      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\):\n+(.+)/);
+      const projectAreaMatch = issueBody.match(/Specify Area of Project \(1 - 5 words\)\n\n(.*)/);
+      const dateCompletedMatch = issueBody.match(/Date of Completion\n\n(.*)/);
+      const typeOfContributionMatch = issueBody.match(/Specify the type of contribution \(e\.g\., Documentation, Community Building, etc\.\)\n\n(.*)/);
 
       if (projectAreaMatch) {
         projectArea = projectAreaMatch[1].trim();
