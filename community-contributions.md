@@ -107,3 +107,4 @@ We are very interested in including every type of contribution in our [Types of 
 | @sgoggins | TEST | N/A | N/A | N/A |
 | @sgoggins | TESTETEE | Website | 2024-04-22 | N/A |
 | @sgoggins | Going down to Southpark | Gonna Have myself a time | 2024-07-31 | User Interface, User Experience, and Accessibility |
+| @sgoggins | Fixing America | Democracy | 2024-08-02 | Documentation Authorship |
